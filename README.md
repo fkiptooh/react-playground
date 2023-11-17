@@ -1,30 +1,30 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple react app created using `npx create vite@latest` command. Here in we will be looking on a lot of concepts and features that have come along to ease the life of a developer and make them a fast and better developers.
 
-Currently, two official plugins are available:
+Some of the things that I would be covering will be included below and the list will keep growing as well:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Zod Library [(https://zod.dev/)]
+- TanStack [(https://tanstack.com/query/latest)] 
 
-## Expanding the ESLint configuration
+## Zod Libray
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+If you are developing a form and need of robust validation and all the check in place then look no further; Zod had your back.
 
-- Configure the top-level `parserOptions` property like this:
+- Zod installation and simple code snippet:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```ts
+`installation` : npm i zod
+
+  import { z } from "zod";
+
+  const schema = z.object({
+    username: z.string(),
+  });
+
+  type User = z.infer<typeof schema>;
+
+  const user: User = { username: "Felix" };
+
+  console.log(schema.parse(user));
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
